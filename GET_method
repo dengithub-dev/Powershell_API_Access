@@ -1,0 +1,28 @@
+#Get Method in accessing any API
+#Added loops and if condition in the code
+$commands = {
+    Write-Host "1. Get #1 Option`n2. Get #2 Option`n"
+    $choice = Read-Host -Prompt '#'
+    $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+    $headers.Add("Accept", "application/json")
+    $headers.Add("Authorization", "Bearer token here")
+    $headers.Add("Content-Type", "application/json")
+    if ( $choice -eq '1' )
+    {
+       $rfp = Read-Host -Prompt '#1 Option'
+       $response = Invoke-RestMethod "url" -Method 'GET' -Headers $headers -Body $body
+    }
+    elseif ($choice -eq '2')
+    { 
+        $rfp = Read-Host -Prompt '#1 Option'
+        $response = Invoke-RestMethod "url" -Method 'GET' -Headers $headers -Body $body
+    }
+    else {
+        Write-Host "Wrong keyword...Program will now exit."
+        pause
+        exit
+    }
+    $response | ConvertTo-Json
+    &$commands #goto
+}
+&$commands 
